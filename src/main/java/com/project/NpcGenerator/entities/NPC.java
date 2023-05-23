@@ -15,15 +15,26 @@ import lombok.*;
 @ToString
 public class NPC {
 
-    public NPC(String nome, int idade, String raca, String profissao, String alinhamento, String atributoAlto, String atributoBaixo, String estiloCombate) {
-        this.nome = nome;
-        this.idade = idade;
-        this.raca = raca;
-        this.profissao = profissao;
-        this.alinhamento = alinhamento;
-        this.atributoAlto = atributoAlto;
-        this.atributoBaixo = atributoBaixo;
-        this.estiloCombate = estiloCombate;
+    public NPC (NPC newNPC) {
+        this.nome = newNPC.getNome();
+        this.idade = newNPC.getIdade();
+        this.raca = newNPC.getRaca();
+        this.profissao = newNPC.getProfissao();
+        this.alinhamento = newNPC.getAlinhamento();
+        this.atributoAlto = newNPC.getAtributoAlto();
+        this.atributoBaixo = newNPC.getAtributoBaixo();
+        this.estiloCombate = newNPC.getEstiloCombate();
+
+    }
+    public NPC (RandomNPC rNPC) {
+        this.nome = rNPC.getNome();
+        this.idade = rNPC.getIdade();
+        this.raca = rNPC.getRaca();
+        this.profissao = rNPC.getProfissao();
+        this.alinhamento = rNPC.getAlinhamento();
+        this.atributoAlto = rNPC.getAtributoAlto();
+        this.atributoBaixo = rNPC.getAtributoBaixo();
+        this.estiloCombate = rNPC.getEstiloCombate();
     }
 
     @Id

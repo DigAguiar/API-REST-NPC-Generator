@@ -1,36 +1,33 @@
 package com.project.NpcGenerator.services;
 
 import com.project.NpcGenerator.entities.NPC;
+import com.project.NpcGenerator.entities.RandomNPC;
 import com.project.NpcGenerator.repositories.NpcRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class NpcService {
     @Autowired
     NpcRepository npcRepository;
 
 
-    public void salvar() {
-        NPC npc = new NPC(
-                "Raul",
-                28,
-                "humano",
-                "Computeiro",
-                "do bem master",
-                "carisma",
-                "força",
-                "caster");
+    public void salvar(NPC newNPC) throws Exception {
+        npcRepository.save(newNPC);
 
+    }
 
-        try {
-            npcRepository.save(npc);
-        } catch (Exception e) {
-            throw new RuntimeException("Nome existente");
-        }
+    public void salvarAleatorio() {
+        RandomNPC rNPC = new RandomNPC();
+        rNPC.statusNPC();
 
+        npcRepository.save(new NPC(rNPC));
     }
 
     public List<NPC> listar() {
@@ -38,35 +35,32 @@ public class NpcService {
         return npcList;
     }
 
-    public String apagar(Integer idNPC) {
-        String msg = "ID Inexistente";
-        List<NPC> npcList = npcRepository.findAll();
-
-        for (NPC npc : npcList) {
-            if (npc.getId() == idNPC)
-                msg = npc.getNome() + " APAGADO COM SUCESSO!";
-        }
-
-        npcRepository.deleteById(idNPC);
-
-
-        return msg;
+    public void apagar(Integer id) throws Exception {
+        NPC npc = npcRepository.getReferenceById(id);
+        npcRepository.delete(npc);
     }
 
-    public String editar(Integer idNPC) {
-        String msg = "Editado";
+    public void editar(Integer idNPC, NPC dados) throws Exception {
         NPC npc = npcRepository.getById(idNPC);
 
-        npc.setNome("Diogo de Aguiar");
-        npc.setIdade(21);
-        npc.setRaca("Humano");
-        npc.setProfissao("Estudante");
-        npc.setAlinhamento("Do bem");
-        npc.setAtributoAlto("Força");
-        npc.setAtributoBaixo("Sabedoria");
-        npc.setEstiloCombate("Combatente");
+        if (dados.getNome() != null)
+            npc.setNome(dados.getNome());
+        if (dados.getIdade() != 0)
+            npc.setIdade(dados.getIdade());
+        if (dados.getRaca() != null)
+            npc.setRaca(dados.getRaca());
+        if (dados.getProfissao() != null)
+            npc.setProfissao(dados.getProfissao());
+        if (dados.getAlinhamento() != null)
+            npc.setAlinhamento(dados.getAlinhamento());
+        if (dados.getAtributoAlto() != null)
+            npc.setAtributoAlto(dados.getAtributoAlto());
+        if (dados.getAtributoBaixo() != null)
+            npc.setAtributoBaixo(dados.getAtributoBaixo());
+        if (dados.getEstiloCombate() != null)
+            npc.setEstiloCombate(dados.getEstiloCombate());
+        salvar(npc);
 
-        return msg;
     }
 
 }
