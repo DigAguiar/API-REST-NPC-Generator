@@ -23,9 +23,12 @@ Uma API com Java 17 e a framework Spring, que possui as requisições HTTP ```GE
 
 
 ### Exemplos de requisições:
-- Listar NPC's = Uma requisição do tipo ```GET``` que imprime todos os NPC's existentes no banco de dados; http://localhost:8080/npcGenerator
-- Criar novo NPC = Uma requisição do tipo ```POST``` que pega todas as informações preenchidas pelo usuário, e cria um novo NPC com as mesmas; http://localhost:8080/npcGenerator
-- Gerar um novo NPC aleatorio = Uma requisição do tipo ```POST``` ao ser chamado, um novo NPC com informações aleatórias, mas congruentes, é criado e adicionado ao banco de dados; http://localhost:8080/npcGenerator/randomNPC
-- Editar um NPC existente =  Uma requisição do tipo ```PUT``` que edita um NPC a escolha do usuário, o cliente pode alterar qualquer informação, que sera editado no banco de dados;http://localhost:8080/npcGenerator/edit=('id do NPC escolhido')
-- Apagar um NPC existente =  Uma requisição do tipo ```DELETE``` que localiza um NPC através de seu ID, e o remove do banco de dados;http://localhost:8080/npcGenerator/delete=('id do NPC escolhido')
+
+#### Inicio do link: http://localhost:8080
+
+- Listar NPC's = Uma requisição do tipo ```GET``` que imprime todos os NPC's existentes no banco de dados; "/npcGenerator"
+- Criar novo NPC = Uma requisição do tipo ```POST``` que pega todas as informações preenchidas pelo usuário, e cria um novo NPC com as mesmas;"/npcGenerator"
+- Gerar um novo NPC aleatorio = Uma requisição do tipo ```POST``` ao ser chamado, um novo NPC com informações aleatórias, mas congruentes, é criado e adicionado ao banco de dados; "/npcGenerator/randomNPC"
+- Editar um NPC existente =  Uma requisição do tipo ```PUT``` que edita um NPC a escolha do usuário, o cliente pode alterar qualquer informação, que sera editado no banco de "/npcGenerator/edit=('id do NPC escolhido')"
+- Apagar um NPC existente =  Uma requisição do tipo ```DELETE``` que localiza um NPC através de seu ID, e o remove do banco de dados;"/npcGenerator/delete=('id do NPC escolhido')"
 
