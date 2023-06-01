@@ -1,5 +1,5 @@
-# API-NPC-Generator2.0
-API atualizada e funcionando
+# API-REST-NPC-Generator
+API REST atualizada e funcionando
 
 
 ### Briefing da API:
