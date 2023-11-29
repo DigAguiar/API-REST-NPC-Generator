@@ -1,6 +1,7 @@
 package com.project.NpcGenerator.controllers;
 
 import com.project.NpcGenerator.entities.NPC;
+import com.project.NpcGenerator.entities.RandomNPC;
 import com.project.NpcGenerator.repositories.NpcRepository;
 import com.project.NpcGenerator.services.NpcService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,10 @@ public class NpcController {
     }
 
     @PostMapping("/randomNPC")
-    public ResponseEntity<Object> salvarAleatorio() {
-        npcService.salvarAleatorio();
+    public ResponseEntity<RandomNPC> salvarAleatorio() {
+        var obj = npcService.salvarAleatorio();
 
-
-        return ResponseEntity.ok("NPC Aleatorio salvo!");
+        return ResponseEntity.ok(obj);
     }
 
 

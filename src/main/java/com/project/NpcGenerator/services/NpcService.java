@@ -18,16 +18,17 @@ public class NpcService {
     NpcRepository npcRepository;
 
 
-    public void salvar(NPC newNPC) throws Exception {
+    public NPC salvar(NPC newNPC) throws Exception {
         npcRepository.save(newNPC);
-
+        return newNPC;
     }
 
-    public void salvarAleatorio() {
+    public RandomNPC salvarAleatorio() {
         RandomNPC rNPC = new RandomNPC();
         rNPC.statusNPC();
 
         npcRepository.save(new NPC(rNPC));
+        return rNPC;
     }
 
     public List<NPC> listar() {
