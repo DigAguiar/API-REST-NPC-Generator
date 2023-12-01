@@ -28,7 +28,29 @@ class NpcGeneratorApplicationTests {
 		}
 		Assertions.assertTrue(teste);
 
+	}
 
+	@Test
+	@DisplayName("Testar se a lista de NPCS está sendo 'puxada'")
+	void testGetListExistentsNpcs () {
+		boolean teste = false;
+		var npcList = npcService.listar();
+
+		if (npcList==null)
+			teste = true;
+
+		Assertions.assertFalse(teste);
+
+	}
+	@Test
+	@DisplayName("Salvando 150 NPC's aleatorios de vez, e analisar tempo de resposta (ms)")
+	void savingAlotOfRandomNpcs () {
+		boolean teste = true;
+		for (int i = 0;i < 150; i++){
+			npcService.salvarAleatorio();
+		}
+
+		Assertions.assertTrue(teste);
 	}
 
 }

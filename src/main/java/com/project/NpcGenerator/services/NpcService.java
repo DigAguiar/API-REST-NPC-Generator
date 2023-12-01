@@ -42,7 +42,7 @@ public class NpcService {
     }
 
     public void editar(Integer idNPC, NPC dados) throws Exception {
-        NPC npc = npcRepository.getById(idNPC);
+        NPC npc = npcRepository.getReferenceById(idNPC);
 
         if (dados.getNome() != null)
             npc.setNome(dados.getNome());
